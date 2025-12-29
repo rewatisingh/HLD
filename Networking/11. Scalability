@@ -1,0 +1,34 @@
+Scalability
+-> It is the measure of how well a system responds to changes by adding or removing 
+resources to meet demands.
+
+
+Vertical scaling
+-> Vertical scaling (also known as scaling up) expands a system's scalability by adding more power 
+to an existing machine. 
+-> Vertical scaling refers to improving an application's capability via increasing hardware capacity.
+
+Advantages
+    1. Simple to implement
+    2. Easier to manage
+    3. Data consistent
+Disadvantages
+    1. Risk of high downtime
+    2. Harder to upgrade
+    3. Can be a single point of failure
+
+
+Horizontal scaling
+-> Horizontal scaling (also known as scaling out) expands a system's scale by adding more machines. 
+-> It improves the performance of the server by adding more instances to the existing pool of servers, 
+allowing the load to be distributed more evenly.
+
+Advantages
+    1. Increased redundancy
+    2. Better fault tolerance
+    3. Flexible and efficient
+    4. Easier to upgrade
+Disadvantages
+    1. Increased complexity
+    2. Data inconsistency
+    3. Increased load on downstream services

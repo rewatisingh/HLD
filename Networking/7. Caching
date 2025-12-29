@@ -1,0 +1,103 @@
+Caching
+-> Primary purpose is to increase data retrieval performance by reducing the need to access 
+the underlying slower storage layer. 
+-> Cache typically stores a subset of data transiently, in contrast to databases 
+whose data is usually complete and durable.
+-> Caches take advantage of the locality of reference principle 
+"recently requested data is likely to be requested again".
+
+
+Advantages
+1. Improves performance
+2. Reduce latency
+3. Reduce load on the database
+4. Reduce network cost
+5. Increase Read Throughput
+
+
+Usage of Caching
+Cache should not be used as permanent data storage. 
+They are almost always implemented in volatile memory because it is faster, and thus 
+should be considered transient.
+1. Database Caching
+2. Content Delivery Network (CDN)
+3. Domain Name System (DNS) Caching
+4. API Caching
+
+
+Caching and Memory
+-> A cache is fast, small memory organized in levels (L1, L2, L3…) that stores data in blocks 
+with tags. 
+-> Requests check the fastest level first (L1) and fall back to slower levels (L2, L3...); 
+if data isn’t found, it’s fetched from main storage and stored in the cache for faster future access.
+
+
+Cache hit 
+-> Closer the data is to the CPU, faster the access.
+-> A cache hit occurs when requested data is found in the cache and served quickly 
+by matching its tag.
+    -> Hot cache: Data found in L1 (fastest)
+    -> Warm cache: Data found in L2/L3 (moderate speed)
+    -> Cold cache: Data found in lower levels (slowest, but still a hit)
+
+
+Cache miss
+-> A cache miss refers to the instance when the memory is searched, and the data isn't found. 
+When this happens, the content is transferred and written into the cache.
+
+
+Cache Invalidation
+-> Cache invalidation is a process where the computer system declares the cache entries as invalid 
+and removes or replaces them. 
+-> If the data is modified, it should be invalidated in the cache, if not, this can cause 
+inconsistent application behavior. 
+
+3 Kinds of Caching System:
+1. Write-through cache
+Data is written into the cache and the corresponding database simultaneously.
+Pro: Fast retrieval, complete data consistency between cache and storage.
+Con: Higher latency for write operations.
+
+2. Write-around cache
+Where write directly goes to the database or permanent storage, bypassing the cache.
+Pro: This may reduce latency.
+Con: It increases cache misses because the cache system has to read the information from the database 
+in case of a cache miss. 
+As a result, this can lead to higher read latency in the case of applications that write and 
+re-read the information quickly.
+
+3. Write-back cache
+Where the write is only done to the caching layer and the write is confirmed as soon as the 
+write to the cache completes. The cache then asynchronously syncs this write to the database.
+Pro: This would lead to reduced latency and high throughput for write-intensive applications.
+Con: There is a risk of data loss in case the caching layer crashes. 
+We can improve this by having more than one replica acknowledging the write in the cache.
+
+
+Eviction policies
+1. First In First Out (FIFO): 
+The cache evicts the first block accessed first without any regard to how often 
+or how many times it was accessed before.
+
+2. Last In First Out (LIFO): 
+The cache evicts the block accessed most recently first without any regard to how often 
+or how many times it was accessed before.
+
+3. Least Recently Used (LRU): 
+Discards the least recently used items first.
+
+4. Most Recently Used (MRU): 
+Discards the most recently used items first.
+
+5. Least Frequently Used (LFU): 
+Counts how often an item is needed. Those that are used least often are discarded first.
+
+6. Random Replacement (RR): 
+Randomly selects a candidate item and discards it to make space when necessary.
+
+
+Examples:
+1. Redis
+2. Memcached
+3. Amazon Elasticache
+4. Aerospike

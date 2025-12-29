@@ -1,0 +1,48 @@
+Database Replication
+-> Replication is a process that involves sharing information to ensure consistency 
+between redundant resources such as multiple databases, to improve 
+reliability, fault-tolerance, or accessibility.
+
+Master-Slave Replication
+The master handles all writes and usually reads, and replicates write changes to one or more slaves,
+which serve read-only traffic. 
+Slaves can further replicate to other slaves, forming a tree-like replication structure to scale reads.
+If the master fails, the system can still serve reads from slaves, 
+but writes are blocked until a slave is promoted to master or a new master is created.
+
+Advantages
+1. Backups of the entire database of relatively no impact on the master.
+2. Applications can read from the slave(s) without impacting the master.
+3. Slaves can be taken offline and synced back to the master without any downtime.
+
+Disadvantages
+1. Replication adds more hardware and additional complexity.
+2. Downtime and possibly loss of data when a master fails.
+3. All writes also have to be made to the master in a master-slave architecture.
+4. The more read slaves, the more we have to replicate, which will increase replication lag.
+
+
+Master-Master Replication
+Both masters serve reads/writes and coordinate with each other. 
+If either master goes down, the system can continue to operate with both reads and writes.
+
+Advantages
+1. Applications can read from both masters.
+2. Distributes write load across both master nodes.
+3. Simple, automatic, and quick failover.
+
+Disadvantages
+1. Not as simple as master-slave to configure and deploy.
+2. Either loosely consistent or have increased write latency due to synchronization.
+3. Conflict resolution comes into play as more write nodes are added and as latency increases.
+
+
+Synchronous vs Asynchronous replication
+Synchronous replication:
+Data is written to the primary and replica at the same time, ensuring both stay fully consistent. 
+This provides strong consistency but increases latency and cost.
+
+Asynchronous replication:
+Data is written to the primary first, and then copied to replicas later. 
+Replication may be near real-time or scheduled, making it more cost-effective and faster, 
+but replicas can temporarily lag behind the primary.

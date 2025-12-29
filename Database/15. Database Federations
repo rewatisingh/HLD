@@ -1,0 +1,31 @@
+Database Federation
+
+Database Federation (also called functional partitioning) is an approach where data is 
+split across multiple independent databases by function, but presented to users as one 
+logical database. Each database continues to operate autonomously, while a 
+federated schema defines how shared data is exposed and accessed across the system.
+
+A federated database provides a unified view over multiple data sources, 
+which may include different databases and even structured or unstructured data. 
+The key idea is integration without consolidation—data stays where it is, 
+but can be queried as if it were in one place.
+
+Key Characteristics
+	• Transparency: Users don’t need to know where the data physically resides.
+	• Heterogeneity: Supports different DBMSs, data models, hardware, and protocols.
+	• Extensibility: New data sources can be added easily as business needs evolve.
+	• Autonomy: Existing databases remain unchanged and independently managed.
+	• Data Integration: Combines data from multiple systems into a cohesive view.
+
+
+Advantages
+	• Flexible data sharing across systems
+	• Preserves autonomy of individual databases
+	• Unified access to heterogeneous data
+	• Loose coupling with legacy systems
+
+Disadvantages
+	• Increased system complexity and hardware overhead
+	• Cross-database joins are difficult and expensive
+	• Dependence on independently managed data sources
+	• Performance and scalability challenges

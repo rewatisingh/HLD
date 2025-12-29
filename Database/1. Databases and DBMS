@@ -1,0 +1,45 @@
+Databases and DBMS
+-> A database is an organized collection of structured data stored electronically. 
+-> It is managed using a Database Management System (DBMS), which acts as an interface between 
+the data and users or applications. 
+-> The DBMS enables creating, reading, updating, and managing data, while also handling 
+administrative tasks like performance tuning, monitoring, security, backup, and recovery. 
+-> Together, the data, DBMS, and related applications form a database system.
+
+
+Components
+1. Schema
+A schema defines the structure of data and what types of values are allowed, 
+and it may be strictly enforced, loosely enforced, or absent. 
+
+2. Table
+A table stores data in a structured format similar to a spreadsheet, consisting of columns and rows. 
+
+3. Columns
+A column contains a set of data values of a particular type, one value for each row of the database. 
+A column may contain text values, numbers, enums, timestamps, etc.
+
+4. Rows
+Data in a table is recorded in rows. There can be thousands or millions of rows in a table 
+having any particular information.
+
+
+Types of databases
+1. SQL
+2. NoSQL
+    1. Document
+    2. Key - Value 
+    3. Graph
+    4. Timeseries
+    5. Wide column
+    6. Multi-model
+
+
+Challenges
+	• Handling rapidly growing data volumes from multiple sources
+	• Ensuring strong data security while keeping data accessible
+	• Supporting real-time data access for business decisions
+	• Managing increasing database and infrastructure complexity
+	• Scaling efficiently without accurately predicting future capacity
+	• Meeting data residency, sovereignty, and low-latency requirements
+

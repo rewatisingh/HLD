@@ -1,0 +1,25 @@
+Availability
+-> Availability is the time a system remains operational to perform its required function 
+in a specific period. 
+-> It is a simple measure of the percentage of time that a system, service, or machine 
+remains operational under normal conditions.
+
+
+Availability vs Reliability
+Reliability means the system works correctly without failure, 
+and a reliable system is naturally available. 
+
+Availability means the system is accessible when needed, even if failures occur. 
+
+High reliability leads to high availability, but a system can be highly available through 
+redundancy and failover while still being unreliable internally.
+
+
+High Availability vs Fault Tolerance
+Both aim for high uptime, but differ in approach. 
+
+Fault tolerance ensures zero service interruption by using full hardware redundancy, 
+allowing an immediate takeover if a component fails, but at a much higher cost. 
+
+High availability allows minimal downtime by recovering quickly from failures, 
+making it more cost-effective but not completely interruption-free.

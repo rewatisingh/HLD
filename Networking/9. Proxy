@@ -1,0 +1,52 @@
+Proxy
+-> A proxy server acts as an intermediary between clients and backend servers, 
+forwarding client requests to origin servers. 
+-> Used to filter, log, secure, and modify requests, such as adding or removing headers, 
+handling encryption/decryption, or compressing data before forwarding.
+
+
+Types
+1. Forward proxy
+-> A forward proxy sits between client machines and the internet, 
+intercepting client requests and forwarding them to external servers on the clients’ behalf, 
+acting as a middleman between users and web services.
+-> Also called proxy, proxy server, or web proxy
+Advanatges of forward proxy
+    1. Block access to certain content
+    2. Allows access to geo-restricted content
+    3. Provides anonymity
+    4. Avoid other browsing restrictions
+
+2. Reverse proxy
+-> A reverse proxy is a server that sits in front of one or more web servers, 
+intercepting requests from clients. 
+-> When clients send requests to the origin server of a website, those requests are intercepted 
+by the reverse proxy server.
+Advanatges of reverse proxy
+    1. Improved security
+    2. Caching
+    3. SSL encryption
+    4. Load balancing
+    5. Scalability and flexibility
+
+
+A forward proxy sits in front of clients and hides them from origin servers, 
+A reverse proxy sits in front of origin servers and hides them from clients, 
+ensuring clients never communicate directly with the backend servers.
+
+
+Load balancer vs Reverse Proxy
+A load balancer is primarily used when multiple backend servers exist and distributes traffic 
+among them to improve scalability and availability. 
+A reverse proxy sits in front of one or more servers and can be useful even with a single backend, 
+handling concerns like security, caching, and request routing. 
+
+While a reverse proxy can perform load balancing, 
+a load balancer does not provide the broader capabilities of a reverse proxy.
+
+
+Examples
+1. Nginx
+2. HAProxy
+3. Traefik
+4. Envoy

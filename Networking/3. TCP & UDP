@@ -1,0 +1,42 @@
+TCP
+-> Transmission Control Protocol
+-> Connection oriented (once connection is established, data can trasnmit in both the directions)
+-> In-built systems to check for errors and to guarantee that the data will be delivered in the order it was sent
+-> Preferred for transferring information like still images, data files, and web pages
+-> Reliable but feedback mechanisms result in a larger overhead    
+
+
+UDP
+-> User Datagram Protocol
+-> Connectionless internet protocol 
+-> Error checking and recovery services are not required 
+-> No overhead for opening a connection, maintaining a connection, or terminating a connection
+-> Data is continuously sent to the recipient, whether or not they receive it
+-> Preferred for real-time communications like broadcast or multicast network transmission
+
+Differences between TCP and UDP
+Fetaure: Connection
+TCP - Requires an established connection
+UDP - Connectionless protocol
+
+Fetaure: Guaranteed delivery	
+TCP - Can guarantee delivery of data
+UDP - Cannot guarantee delivery of data
+
+Fetaure: Re-transmission
+TCP - 	Re-transmission of lost packets is possible
+UDP - No re-transmission of lost packets
+
+Fetaure: Speed
+TCP - Slower than UDP
+UDP - Faster than TCP
+
+Fetaure: Broadcasting
+TCP - Does not support broadcasting
+UDP - Supports broadcasting
+
+Use Cases
+TCP - HTTPS, HTTP, SMTP, POP, FTP, etc
+UDP - Video streaming, DNS, VoIP, etc
+
+Both are part of transport layer

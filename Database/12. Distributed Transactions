@@ -1,0 +1,90 @@
+Distributed Transactions
+A distributed transaction is a set of operations on data that is performed across 
+two or more databases. 
+It is typically coordinated across separate nodes connected by a network, 
+but may also span multiple databases on a single server.
+
+
+Why do we need distributed transactions?
+Distributed transactions are needed to maintain data consistency when a 
+single transaction spans multiple databases or services, ensuring that 
+either all changes succeed or all are rolled back together.
+
+In modern systems, a single business operation often spans multiple databases or services 
+(for example, order service, payment service, inventory service). 
+Unlike a traditional ACID transaction on one database, a distributed transaction 
+updates data across multiple independent nodes.
+The challenge is consistency. If one database commits successfully but another fails, 
+the system ends up in an inconsistent state. 
+To prevent this, distributed transactions ensure that all participating nodes either 
+commit together or all roll back together. 
+This requires coordination between nodes so the transaction behaves as one logical unit, 
+even though it spans multiple systems.
+Without distributed transactions, partial failures could corrupt business data, 
+leading to issues like payments deducted without orders being placed.
+
+
+Two Phase Commit (2PC)
+-> Ensures all participating nodes either commit or roll back a transaction together. 
+-> It is used when a transaction spans multiple databases or services and consistency is critical.
+-> A coordinator node manages the transaction and drives consensus across participants in two phases:
+
+Phases:
+1. Prepare Phase
+	• Coordinator asks all participants if they are ready to commit
+	• Each participant replies YES (prepared) or NO (abort)
+	• If any participant says NO, the transaction is aborted
+
+2. Commit Phase
+	• If all participants agree, coordinator instructs them to commit
+	• If a failure occurs, rollback is triggered
+
+Problems with 2PC
+• If a participant crashes, the system may wait indefinitely
+• If the coordinator crashes, participants can get stuck
+• It is a blocking protocol — nodes may hold locks while waiting
+• In rare failure cases, manual intervention is required
+
+
+Three-phase commit (3PC)
+Improves upon 2PC by adding an extra phase to reduce blocking and indefinite waits.
+
+Phases:
+1.	Prepare Phase
+    Same as 2PC
+
+2.	Pre-Commit Phase
+	• Coordinator sends a pre-commit message
+	• Participants acknowledge readiness
+	• If timeout occurs, transaction is safely aborted
+
+3. Commit Phase
+	• Coordinator instructs participants to commit
+
+Why Pre-Commit Helps
+	• Guarantees that all participants completed prepare phase
+	• Allows timeouts at every stage
+	• Reduces chances of indefinite blocking
+
+
+Sagas
+A Saga is a sequence of local transactions, where each transaction:
+	• Updates its own database
+	• Publishes an event to trigger the next step
+If a step fails, compensating transactions are executed to undo previous changes.
+
+Coordination Approaches
+	• Choreography: Services react to events from other services
+	• Orchestration: A central orchestrator directs each step
+
+Problems with Sagas
+	• Hard to debug and reason about
+	• Risk of cyclic dependencies
+	• No strong isolation between participants
+	• Difficult testing (all services must run)
+
+
+
+• 2PC: Strong consistency but blocking and failure-prone
+• 3PC: Reduces blocking by adding a pre-commit phase
+• Saga: Event-driven, scalable alternative using compensations instead of rollbacks

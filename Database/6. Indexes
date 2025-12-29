@@ -1,0 +1,31 @@
+Indexes
+-> An index is a data structure used by databases to speed up data retrieval. 
+-> Instead of scanning every row in a table, the database uses the index to quickly 
+locate where the required data lives—similar to a table of contents in a book.
+
+-> An index stores the indexed column value along with a pointer to the actual row.
+
+Indexes improve read performance but come with trade-offs:
+	• More storage usage
+	• Slower writes, because indexes must also be updated on insert, update, or delete
+
+-> Indexes can be built on one or more columns, enabling fast lookups, sorting, and 
+filtering without duplicating data. This is especially useful for large datasets.
+
+Dense Index
+A dense index has an index entry for every row in the table.
+	• Fast lookups (direct binary search)
+	• No ordering requirement on data
+	• Higher memory usage
+	• Slower writes due to frequent index updates
+
+Used when read performance is critical.
+
+Sparse Index
+A sparse index has entries for only some rows (typically one per data block or range).
+	• Lower memory usage
+	• Faster writes
+	• Slightly slower reads (binary search + scan)
+	• Works best with ordered data
+
+Used when write performance and storage efficiency matter more.

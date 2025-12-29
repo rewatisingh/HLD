@@ -1,0 +1,54 @@
+Clustering
+-> A computer cluster is a group of networked computers that work together as one system, 
+distributing tasks across nodes to use combined processing and memory for better 
+performance, scalability, and reliability.
+-> Parallelize work across multiple machines to do more in less time.
+
+Advanatges of cluster computing
+1. High Availability
+2. Scalability
+3. Performance
+4. Cost-effective
+
+Types
+1. Highly available or fail-over
+2. Load balancing
+3. High-performance computing
+
+
+Configurations
+Commonsly used HA (high availability) configurations:
+
+1. Active-Active
+-> Made up of at least 2 nodes, both actively running same type of service simultaneously
+-> Main purpose: to achieve load balancing
+
+2. Active-Passive
+-> Made up of at least 2 nodes, not all nodes are going to be active
+-> In case of 2 nodes: if the first node is already active, then the second node must be passive
+or on standby.
+
+
+Load balancing vs Clustering
+Clustering = coordinated teamwork.
+Load balancing = smart traffic distribution.
+
+Clustering: Servers know about each other and work together as one system for 
+redundancy and high availability.
+Load Balancing: Servers are independent; a load balancer simply distributes requests among them.
+
+Both can be used together, but load balancing also works with standalone servers 
+serving the same application.
+
+
+Challenges of Clustering
+More machines = more coordination and management overhead.
+Clustering increases operational complexity—software must be installed and maintained on every node, 
+heterogeneous nodes complicate management, resource usage and logs must be monitored centrally, 
+and shared or distributed storage requires careful coordination to avoid conflicts and stay in sync.
+
+
+Examples
+1. Containers (e.g. Kubernetes, Amazon ECS)
+2. Databases (e.g. Cassandra, MongoDB)
+3. Cache (e.g. Redis)

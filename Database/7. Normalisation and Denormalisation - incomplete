@@ -1,0 +1,91 @@
+Data Partitioning
+Data partitioning is the practice of dividing a database into smaller, 
+independent parts to improve performance, scalability, availability, and manageability. 
+
+Instead of storing all data on a single machine, the data is distributed across 
+multiple machines, reducing load and enabling parallel access.
+
+Common Partitioning Methods
+
+Horizontal Partitioning (Sharding)
+In horizontal partitioning, rows of a table are split across different databases 
+or machines based on a partition key (such as user ID or region). 
+Each shard holds a subset of rows but has the same schema. 
+This approach is widely used in large-scale systems and is commonly referred to as 
+database sharding.
+
+Vertical Partitioning
+In vertical partitioning, a table is split by columns. 
+Frequently accessed columns are stored together, while less-used columns are placed in 
+separate partitions. 
+This reduces I/O and improves query efficiency for specific access patterns.
+
+Data partitioning improves scalability and performance by splitting databases across machines.
+	• Horizontal partitioning (sharding): splits data by rows using a partition key
+	• Vertical partitioning: splits data by columns into smaller tables
+
+
+What is sharding?
+Sharding is a database architecture pattern that uses horizontal partitioning to 
+split a table’s rows across multiple databases or machines called shards. 
+Each shard has the same schema, but stores only a subset of the total data, 
+and the data in each shard is unique and independent from the others.
+
+The main motivation for sharding is scalability. 
+Beyond a certain scale, upgrading a single server (vertical scaling) becomes expensive and 
+limited. 
+Sharding allows systems to scale horizontally by adding more machines, 
+improving performance, availability, and capacity. 
+Sharding can be implemented either at the application level or directly by the database.
+
+
+Partitioning criteria
+Databases use different partitioning strategies to decide how data is split across partitions 
+or shards. 
+The choice depends on scalability needs, query patterns, and operational complexity.
+
+1. Hash-Based Partitioning:
+Rows are distributed across partitions using a hash function on the partition key. 
+This ensures even data distribution but makes adding or removing servers expensive, 
+as data must be rehashed and redistributed.
+
+2. List-Based Partitioning:
+Partitions are created based on explicit lists of values in a column (e.g., country = IN, US). 
+This gives precise control but can be harder to manage as the list grows.
+
+3. Range-Based Partitioning:
+Data is partitioned by continuous value ranges of a key (e.g., dates or ID ranges).
+Ranges are contiguous and non-overlapping, making it easy to perform range queries, 
+but can lead to hot partitions if data is skewed.
+
+4. Composite Partitioning:
+Combines multiple techniques. Data is first partitioned using one method (e.g., range), 
+and each partition is then further subdivided using another method (e.g., hash). 
+This helps balance load and flexibility.
+
+
+	Hash: even distribution, costly to resize
+	List: value-based control
+	Range: efficient range queries
+	Composite: combines methods for better scalability and balance
+
+
+When to use sharding?
+1. Leveraging existing hardware instead of high-end machines.
+2. Maintain data in distinct geographic regions.
+3. Quickly scale by adding more shards.
+4. Better performance as each machine is under less load.
+5. When more concurrent connections are required.
+
+
+Advantages
+	• Availability: Partitions are logically independent, so failures are isolated and the system remains highly available.
+	• Scalability: Data is distributed across multiple shards, allowing horizontal scaling by adding machines.
+	• Security: Sensitive and non-sensitive data can be stored in separate shards, improving control and protection.
+	• Query Performance: Queries run on smaller data sets instead of the entire database, improving speed.
+	• Data Manageability: Large tables and indexes are broken into smaller, easier-to-manage units.
+
+Disadvantages
+	• Increased Complexity: Sharding adds operational and application-level complexity.
+	• Cross-shard Joins: Joins across multiple shards are inefficient or impractical due to network overhead.
+	• Rebalancing Overhead: Uneven data or traffic distribution may require shard rebalancing, which is costly and complex.

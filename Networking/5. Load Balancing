@@ -1,0 +1,76 @@
+Load Balancing 
+-> Distributes incoming traffic across multiple resources ensuring high availability 
+and reliability by sending requests only to resources that are online
+
+Load Balancer
+-> It distributes incoming traffic across multiple servers so no single server is overloaded, 
+improving performance, scalability, and fault tolerance by routing requests only to healthy servers.
+
+
+Workload distribution
+1. Host-Based: Distributes requests based on the requested hostname
+2. Path-Based: Using the entire URL to distribute requests as opposed to just the hostname
+3. Content-based: Inspects the message content of a request (Eg: distribution based on the value of a parameter)
+
+
+Layers
+1. Network layer
+-> Layer 4
+-> Routing based on networking information such as IP addresses
+-> No Content-Based routing
+-> Can operate at high speed
+
+2. Application layer
+-> Layer 7
+-> Load Balancers can read requests and perform Content-Based routing
+-> Allows the management of load based on a full understanding of traffic
+
+
+Type of Load Balancers
+1. Software
+-> Easier to deploy than hardware versions
+-> More cost-effective and flexible
+-> Flexibility of configuring the load balancer to our environment's specific needs
+
+2. Hardware
+-> Relies on physical, on-premises hardware to distribute application and network traffic
+-> Can handle a large volume of traffic but often carry a hefty price tag and are fairly limited 
+in terms of flexibility
+
+3. DNS 
+-> Practice of configuring a domain in the Domain Name System (DNS) such that client requests 
+to the domain are distributed across a group of server machines
+-> DNS does not check for server and network outages, or errors
+-> It always returns the same set of IP addresses for a domain even if servers are down or inaccessible.
+
+
+Routing Algorithms
+1. Round-robin
+-> Requests are distributed to application servers in rotation.
+
+2. Weighted Round-robin
+-> Builds on the simple Round-robin technique to account for differing server characteristics 
+such as compute and traffic handling capacity using weights that can be assigned via DNS records by the administrator.
+
+3. Least Connections
+-> A new request is sent to the server with the fewest current connections to clients. 
+-> The relative computing capacity of each server is factored into determining 
+-> which one has the least connections.
+
+4. Least Response Time
+Sends requests to the server selected by a formula that combines the fastest response time and 
+fewest active connections.
+
+5. Least Bandwidth
+-> This method measures traffic in megabits per second (Mbps), sending client requests to 
+the server with the least Mbps of traffic.
+
+6. Hashing
+-> Distributes requests based on a key we define, such as the client IP address or the request URL.
+
+
+Advantages of Load Balancers
+1. Scalability
+2. Redundancy
+3. Flexibility
+4. Efficiency

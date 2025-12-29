@@ -1,0 +1,40 @@
+OSI Model
+-> Universal language for computer networking 
+-> Allows us to take a very complex communications process apart and evaluate its components
+
+7 Layers 
+Top to bottom
+7. Application Layer
+-> Directly interacts with users
+-> Protocols include HTTP and SMTP
+-> Responsible for the protocols and data manipulation that the software relies on to present meaningful data to the user
+
+6. Presentation Layer
+-> Also called Translation Layer
+-> Data from Application Layer is extracted here and manipulated as per the required format to transmit over the network
+-> Translation, Encryption/Decryption, and compression
+
+5. Session Layer
+-> Responsible for opening and closing communication between two devices
+-> Ensures that the session stays open long enough to transfer all the data being exchanged, and then promptly closes the session in order to avoid wasting resources
+-> Time between when the communication is opened and closed is known as the session
+
+4. Transport Layer
+-> Responsible for end to end communication between two devices
+-> Takes data from Session Layer, breaks it into chunks called Segments and sends it to Network Layer
+-> Also responsible for reassembling segments on the receiving device into data the session layer can consume
+
+3. Network Layer
+-> Facilitates data transfer between two different networks
+-> Breaks up segments from transport layer into smaller units called packets on sender's device and reassembles these packets on the receiver's device
+-> Also finds best physical path for the data to reach its destination - called Routing
+-> If the two devices communicating are on the same network, then the network layer is unnecessary
+
+2. Data Link Layer
+-> Similar to Network Layer except the data link layer facilitates data transfer between two devices on the same network
+-> Takes packets from Network Layers and breaks them into smaller pieces called frames
+
+1. Physical Layer
+-> Includes the physical equipment involved in the data transfer, such as the cables and switches
+-> Data gets converted into a bit stream, which is a string of 1s and 0s
+-> Physical layer of both devices must also agree on a signal convention so that the 1s can be distinguished from the 0s on both devices

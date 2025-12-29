@@ -1,0 +1,68 @@
+ACID and BASE consistency models
+
+ACID
+-> ACID is a set of properties that ensure reliable and correct transaction processing 
+in relational databases. 
+-> These properties guarantee data integrity even in the presence of failures, concurrency, 
+or crashes.
+
+1. Atomicity:
+A transaction is treated as a single unit—either all operations succeed or none do. 
+If any part fails, the entire transaction is rolled back.
+
+2. Consistency:
+A transaction takes the database from one valid state to another, 
+ensuring all rules, constraints, and relationships remain intact.
+
+3. Isolation:
+Multiple transactions can run at the same time without interfering with each other. 
+The database ensures transactions behave as if they were executed sequentially.
+
+4. Durability:
+Once a transaction is committed, its changes are permanently stored and 
+will survive system crashes or failures.
+
+ACID properties ensure that database transactions are all-or-nothing, valid, independent, 
+and permanent, providing strong data correctness and reliability in relational databases.
+
+
+BASE
+-> BASE is a consistency model commonly used by NoSQL databases to achieve high scalability 
+and availability in distributed systems. 
+-> As data volume and availability requirements grow, systems shift logic away 
+from the database and relax strict consistency guarantees to remain highly available and 
+resilient.
+-> Unlike ACID, which enforces strong transactional consistency, BASE allows 
+temporary inconsistency to gain better scalability, fault tolerance, and performance.
+
+1. Basically Available:
+The system remains operational and responds to requests most of the time, even during failures.
+
+2. Soft State:
+The system state may change over time, and replicas do not need to be immediately consistent 
+with each other.
+
+3. Eventual Consistency:
+Data may be inconsistent temporarily, but eventually all replicas converge to the same 
+correct state.
+
+BASE favors availability and scalability over strict consistency, 
+allowing temporary inconsistencies with the guarantee that the system will eventually 
+become consistent—making it ideal for large-scale, distributed NoSQL systems.
+
+
+ACID vs BASE Trade-offs
+There is no universally correct choice between ACID and BASE —
+each consistency model is designed for different application needs. 
+The decision should be based on system requirements, such as consistency, availability, 
+scalability, and developer complexity.
+
+BASE systems trade strict consistency for scalability and availability, 
+which means developers must carefully handle data consistency at the application level 
+and fully understand the database’s eventual consistency behavior. 
+This added responsibility can increase system complexity and the risk of data anomalies.
+
+ACID databases simplify application design by guaranteeing strong consistency and reliability. 
+They are best suited for use cases where data correctness is critical, 
+such as financial systems, where the simplicity and safety of ACID transactions 
+outweigh scalability trade-offs.

@@ -1,0 +1,46 @@
+SQL 
+-> A SQL (or relational) database is a collection of data items with pre-defined relationships 
+between them. 
+-> These items are organized as a set of tables with columns and rows. 
+-> Tables are used to hold information about the objects to be represented in the database. 
+-> Each column in a table holds a certain kind of data and a field stores the actual value of an attribute. 
+-> The rows in the table represent a collection of related values of one object or entity.
+
+-> Each row in a table could be marked with a unique identifier called a primary key, 
+and rows among multiple tables can be made related using foreign keys. 
+-> SQL databases usually follow the ACID consistency model.
+
+
+A materialized view stores pre-computed query results to provide much faster reads for complex or 
+frequently used queries, improving performance, reducing network load, and supporting replication 
+or reporting use cases.
+
+
+N+1 query problem
+The N+1 query problem happens when the data access layer executes N additional SQL statements 
+to fetch the same data that could have been retrieved when executing the primary SQL query. 
+The larger the value of N, the more queries will be executed, the larger the performance impact.
+
+This is commonly seen in GraphQL and ORM (Object-Relational Mapping) tools and 
+can be addressed by optimizing the SQL query or using a dataloader that batches 
+consecutive requests and makes a single data request under the hood.
+
+
+Advantages
+1. Simple and accurate
+2. Accessibility
+3. Data consistency
+4. Flexibility
+
+Disadvantages
+1. Expensive to maintain
+2. Difficult schema evolution
+3. Performance hits (join, denormalization, etc.)
+4. Difficult to scale due to poor horizontal scalability
+
+
+Examples
+1. PostgreSQL
+2. MySQL
+3. MariaDB
+4. Amazon Aurora

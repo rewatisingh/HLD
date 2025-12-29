@@ -1,0 +1,32 @@
+Consistent Hashing
+
+Consistent hashing is a technique used to distribute data across a dynamic set of nodes 
+(servers/shards) while minimizing data movement when nodes are added or removed.
+
+Instead of hashing data directly to a fixed number of servers, 
+both data keys and servers are mapped onto a logical hash ring. 
+Each data item is assigned to the next server clockwise on the ring. 
+When a server joins or leaves, only the data mapped to that server is remapped, 
+not the entire dataset.
+
+To improve load balance, virtual nodes (vnodes) are used—each physical server is 
+represented multiple times on the ring. 
+This ensures more even data distribution and smoother scaling.
+
+Why it matters:
+Traditional hashing requires rehashing most data when the number of servers changes. 
+Consistent hashing avoids this, making it ideal for distributed caches, databases, and 
+sharded systems.
+
+
+Advantages
+1. Makes rapid scaling up and down more predictable.
+2. Facilitates partitioning and replication across nodes.
+3. Enables scalability and availability.
+4. Reduces hotspots.
+
+Disadvantages
+1. Increases complexity.
+2. Cascading failures.
+3. Load distribution can still be uneven.
+4. Key management can be expensive when nodes transiently fail.
